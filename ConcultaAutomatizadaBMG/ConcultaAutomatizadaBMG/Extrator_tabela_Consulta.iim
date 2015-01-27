@@ -1,0 +1,140 @@
+SET !TIMEOUT_STEP 90
+SET !EXTRACT_TEST_POPUP NO
+
+FRAME NAME=rightFrame
+TAG POS=1 TYPE=TD FORM=NAME:consignacaoForm ATTR=TXT:Cabeçalho
+
+'Cabeçalho
+'ENTIDADE
+SET !ERRORIGNORE YES
+FRAME NAME=rightFrame
+TAG POS=1 TYPE=TD FORM=NAME:consignacaoForm ATTR=TXT:Entidade:
+TAG POS=R1 TYPE=TD FORM=NAME:consignacaoForm ATTR=TXT:* EXTRACT=TXT
+'SERVIÇO
+TAG POS=1 TYPE=SPAN FORM=NAME:consignacaoForm ATTR=ID:label_convenio.servico.descricao EXTRACT=TXT
+'LOJA
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:ade.loja EXTRACT=TXT
+'Produto
+TAG POS=1 TYPE=SPAN FORM=NAME:consignacaoForm ATTR=ID:label_ade.produto EXTRACT=TXT
+
+'Dados Funcionais
+'Benefício
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=ID:input_registro_matricula_MatriculaINSS EXTRACT=TXT
+'UF Benefício
+TAG POS=1 TYPE=SELECT FORM=NAME:consignacaoForm ATTR=NAME:ade.ufContaBeneficio EXTRACT=TXT
+'Data de Nascimento
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:servidor.dataNascimento EXTRACT=TXT
+'Data da renda
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:registro.dataRenda EXTRACT=TXT
+'Valor da renda
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:registro.renda EXTRACT=TXT
+'Tipo de benefício codigo
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:registro.codTipoBeneficio EXTRACT=TXT
+'descricao
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:registro.nomeTipoBeneficio EXTRACT=TXT
+'Grau instrução
+TAG POS=1 TYPE=SELECT FORM=NAME:consignacaoForm ATTR=NAME:servidor.grauInstrucao EXTRACT=TXT
+
+'Margem
+'Competência
+TAG POS=1 TYPE=TD FORM=NAME:consignacaoForm ATTR=CLASS:CEDtopo EXTRACT=TXT
+'Descontos compulsórios
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:margem.compulsorio EXTRACT=TXT
+'Empréstimo (inclusive BMG)
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:margem.outro EXTRACT=TXT
+'Valor da margem
+TAG POS=1 TYPE=SPAN FORM=NAME:consignacaoForm ATTR=ID:label_margem.valorRestante EXTRACT=TXT
+
+'Dados Pessoais
+'Nome
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:servidor.nome EXTRACT=TXT
+'CPF
+TAG POS=1 TYPE=SPAN FORM=NAME:consignacaoForm ATTR=ID:label_servidor.cpf EXTRACT=TXT
+'Sexo
+TAG POS=1 TYPE=SELECT FORM=NAME:consignacaoForm ATTR=NAME:servidor.sexo EXTRACT=TXT
+'Estado civil
+TAG POS=1 TYPE=SELECT FORM=NAME:consignacaoForm ATTR=NAME:servidor.estadoCivil EXTRACT=TXT
+'Conjugue 
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:servidor.nomeConjuge EXTRACT=TXT
+'Nome da mãe
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:servidor.nomeMae EXTRACT=TXT
+'Nome do pai
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:servidor.nomePai EXTRACT=TXT
+'Naturalidade
+'cidade
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:servidor.cidadeNascimento EXTRACT=TXT
+'uf
+TAG POS=1 TYPE=SELECT FORM=NAME:consignacaoForm ATTR=NAME:servidor.ufNascimento EXTRACT=TXT
+'Nacionalidade
+TAG POS=1 TYPE=SELECT FORM=NAME:consignacaoForm ATTR=NAME:servidor.nacionalidade EXTRACT=TXT
+'Tipo de documentãção
+TAG POS=1 TYPE=SELECT FORM=NAME:consignacaoForm ATTR=NAME:servidor.identidade.tipo EXTRACT=TXT
+'Número identidade
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:servidor.identidade.numero EXTRACT=TXT
+'Órgão Emissor
+TAG POS=1 TYPE=SELECT FORM=NAME:consignacaoForm ATTR=NAME:servidor.identidade.emissor EXTRACT=TXT
+'UF emissor
+TAG POS=1 TYPE=SELECT FORM=NAME:consignacaoForm ATTR=NAME:servidor.identidade.uf EXTRACT=TXT
+'Data de emissão
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:servidor.identidade.dataEmissao EXTRACT=TXT
+'Email
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:endereco.email EXTRACT=TXT
+'Time
+TAG POS=1 TYPE=SELECT FORM=NAME:consignacaoForm ATTR=NAME:servidor.codigoTime EXTRACT=TXT
+'Numero de dependentes
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:servidor.dependentes EXTRACT=TXT
+'Numero de veiculos
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:servidor.veiculos EXTRACT=TXT
+'Tem residencia própria
+TAG POS=1 TYPE=SELECT FORM=NAME:consignacaoForm ATTR=NAME:servidor.possuiResidencia EXTRACT=TXT
+'Tempo de residencia (meses)
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:servidor.tempoResidencia EXTRACT=TXT
+
+'Endereço
+'CEP
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:endereco.cep EXTRACT=TXT
+'Logradouro
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:endereco.logradouro EXTRACT=TXT
+'Logradouro sem numero
+TAG POS=1 TYPE=INPUT:CHECKBOX FORM=NAME:consignacaoForm ATTR=NAME:endereco.logradouroSemNumero EXTRACT=CHECKED
+'Número logradouro
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:endereco.numero EXTRACT=TXT
+'Complemento
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:endereco.complemento EXTRACT=TXT
+'Bairro
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:endereco.bairro EXTRACT=TXT
+'Cidade
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:endereco.cidade EXTRACT=TXT
+'UF
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:endereco.uf EXTRACT=TXT
+'DDD
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:endereco.telefone.ddd EXTRACT=TXT
+'FONE
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:endereco.telefone.numero EXTRACT=TXT
+'DDDCEL
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:endereco.telefoneCelular1.ddd EXTRACT=TXT
+'CEL
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:endereco.telefoneCelular1.numero EXTRACT=TXT
+'DDDCEL2
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:endereco.telefoneCelular2.ddd EXTRACT=TXT
+'CEL2
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:consignacaoForm ATTR=NAME:endereco.telefoneCelular2.numero EXTRACT=TXT
+
+
+
+'CONTRATOS
+'SET !ERRORIGNORE YES
+'FRAME NAME=rightFrame
+'TAG POS=1 TYPE=TABLE FORM=NAME:consignacaoForm ATTR=ID:contratosPassiveisDeRefinanciamento EXTRACT=TXT
+'SET CONTRATOS {{!EXTRACT}}
+'SET !ERRORIGNORE NO
+'SET !EXTRACT NULL
+
+'SET !TIMEOUT_STEP 1
+'CONTRATOS NÃO PASSÍVEIS DE REFINANCIAMENTO
+'SET !ERRORIGNORE YES
+'TAG POS=1 TYPE=TABLE FORM=NAME:consignacaoForm ATTR=ID:contratosNaoPassiveisDeRefinanciamento EXTRACT=TXT
+'SET !ERRORIGNORE NO
+'SET CONTRATOS_NP_REFIN {{!EXTRACT}}
+'ADD !EXTRACT {{CONTRATOS}}
+

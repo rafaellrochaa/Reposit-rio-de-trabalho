@@ -1,0 +1,15 @@
+SET CPF #CPF#
+WAIT SECONDS=3
+'--comentarioSET !TIMEOUT_STEP 3
+'--comentarioSET !ERRORIGNORE YES
+'--comentarioFRAME NAME=rightFrame
+'--comentarioTAG POS=1 TYPE=SELECT FORM=NAME:identificacao-form ATTR=NAME:identificacao-form:situacaoDoServidor CONTENT=%1
+'--comentarioSET !ERRORIGNORE NO
+'--comentarioFRAME NAME=rightFrame
+FRAME NAME=rightFrame
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:identificacao-form ATTR=ID:identificacao-form:cpf CONTENT={{CPF}}
+'--comentarioSET !ERRORIGNORE YES
+'--comentarioFRAME NAME=rightFrame
+'--comentarioTAG POS=1 TYPE=INPUT:TEXT FORM=NAME:identificacao-form ATTR=NAME:identificacao-form:matricula CONTENT=1234567
+'--comentarioTAG POS=1 TYPE=INPUT:PASSWORD FORM=NAME:identificacao-form ATTR=NAME:identificacao-form:j_idt146 CONTENT=1
+'--comentarioSET !ERRORIGNORE NO

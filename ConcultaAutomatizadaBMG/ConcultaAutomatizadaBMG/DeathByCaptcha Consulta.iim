@@ -1,0 +1,58 @@
+'PASSANDO PARÂMETROS DE BUSCA DE CLIENTE
+
+SET !TIMEOUT_STEP 10
+
+SET ESTABELECIMENTO #convenio#
+SET CPF #CPF#
+
+FRAME NAME=rightFrame
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:identificacao-form ATTR=CLASS:text<sp>find content={{ESTABELECIMENTO}}
+
+'--comentarioSET !TIMEOUT_STEP 3
+'--comentarioSET !ERRORIGNORE YES
+'--comentarioFRAME NAME=rightFrame
+'--comentarioTAG POS=1 TYPE=SELECT FORM=NAME:identificacao-form ATTR=NAME:identificacao-form:situacaoDoServidor CONTENT=%1
+'--comentarioSET !ERRORIGNORE NO
+WAIT SECONDS=3
+'--comentarioFRAME NAME=rightFrame
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:identificacao-form ATTR=NAME:identificacao-form:cpf CONTENT={{CPF}}
+'--comentarioSET !ERRORIGNORE YES
+'--comentarioFRAME NAME=rightFrame
+'--comentarioTAG POS=1 TYPE=INPUT:TEXT FORM=NAME:identificacao-form ATTR=NAME:identificacao-form:matricula CONTENT=1234567
+'--comentarioTAG POS=1 TYPE=INPUT:PASSWORD FORM=NAME:identificacao-form ATTR=NAME:identificacao-form:j_idt146 CONTENT=1
+'--comentarioSET !ERRORIGNORE NO
+
+'DOWNLOAD DA IMAGEM
+ONDOWNLOAD FOLDER=#TEMP_FOLDER# FILE=captchaImacros.png
+FRAME NAME=rightFrame
+SET !ERRORIGNORE YES
+SET !TIMEOUT_STEP 1
+TAG POS=1 TYPE=IMG FORM=NAME:identificacao-form ATTR=CLASS:curr_img CONTENT=EVENT:SAVE_ELEMENT_SCREENSHOT
+
+'FAZENDO O UPLOAD DO CAPTCHA
+TAB OPEN
+TAB T=2
+SET !TIMEOUT_STEP 60
+URL GOTO=http://api.dbcapi.me/decaptcher?function=picture2&print_format=html
+'CHAVE NORTECRED
+TAG POS=1 TYPE=INPUT:TEXT FORM=ACTION:http://api.dbcapi.me/decaptcher ATTR=NAME:username CONTENT=nortecred
+TAG POS=1 TYPE=INPUT:TEXT FORM=ACTION:http://api.dbcapi.me/decaptcher ATTR=NAME:password CONTENT=nortecred
+TAG POS=1 TYPE=INPUT:FILE FORM=ACTION:http://api.dbcapi.me/decaptcher ATTR=NAME:pict CONTENT=#TEMP_FOLDER#captchaImacros.png
+SET !TIMEOUT_STEP 90
+TAG POS=1 TYPE=INPUT:SUBMIT FORM=ACTION:http://api.dbcapi.me/decaptcher ATTR=VALUE:Send
+SET !EXTRACT_TEST_POPUP NO
+TAG POS=6 TYPE=TD ATTR=TXT:* EXTRACT=TXT
+SET CAPTCHA {{!EXTRACT}}
+SET !EXTRACT NULL
+TAB CLOSE
+TAB T=1
+
+SET !TIMEOUT_STEP 5
+FRAME NAME=rightFrame
+TAG POS=1 TYPE=INPUT:TEXT FORM=NAME:identificacao-form ATTR=ID:identificacao-form:idCaptcha:txt-value CONTENT={{CAPTCHA}}
+
+SET !EXTRACTDIALOG YES
+ONDIALOG POS=1 BUTTON=YES
+ONDIALOG POS=1 BUTTON=OK
+SET !REPLAYSPEED SLOW
+TAG POS=1 TYPE=A FORM=NAME:identificacao-form ATTR=TXT:Confirmar
